@@ -1,24 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import logo from './logo.svg';
+import loader from './loader.svg'
 import './App.css';
+import {Menu} from  './Menu/Menu'
+import {FilmList} from './FilmList'
+
+import axios from 'axios'
 
 function App() {
+  const apiKey = '?api_key=14800cc9ec0087dda08a2762746a6750'
+  const getFilmList = (type = 'popular', arg = '') => (
+    axios.get('https://api.themoviedb.org/3/movie/' + type + apiKey + arg)
+  )
+
+  const [isLoading, setLoading] = useState(true);
+  const [title, setTitle] = useState('Film Store');
+  const [filmData, setFilmData] = useState([]);
+
+  const handleGetFilm = (type) => {
+    getFilmList(type).then(response => setFilmData(response.data.results))
+  }
+
+  useEffect(() => {
+    isLoading &&
+      getFilmList().then(
+          response => setFilmData(response.data.results)
+      )
+    setLoading(false)
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <img src={logo} className="logo" alt="logo" />
+        <Menu handleGetFilm={handleGetFilm} setTitle={setTitle}/>
       </header>
+      <main className="main">
+        <h1 className="page-title">{title}</h1>
+        {!isLoading ?
+            <FilmList filmData={filmData}/>
+            :
+            <img src={loader} className="loader" alt="loader" />
+        }
+
+      </main>
     </div>
   );
 }
