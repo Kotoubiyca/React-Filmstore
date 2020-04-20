@@ -1,11 +1,13 @@
 import React, { useState, useEffect }  from 'react';
+import axios from 'axios'
+
+import './App.css';
 import logo from './logo.svg';
 import loader from './loader.svg'
-import './App.css';
+import 'typeface-roboto';
+
 import {Menu} from  './Menu/Menu'
 import {FilmList} from './FilmList'
-
-import axios from 'axios'
 
 function App() {
   const apiKey = '?api_key=14800cc9ec0087dda08a2762746a6750'
@@ -22,12 +24,11 @@ function App() {
   }
 
   useEffect(() => {
-    isLoading &&
-      getFilmList().then(
-          response => setFilmData(response.data.results)
-      )
+    getFilmList().then(
+        response => setFilmData(response.data.results)
+    )
     setLoading(false)
-  });
+  }, [isLoading]);
 
   return (
     <div className="App">
@@ -42,7 +43,6 @@ function App() {
             :
             <img src={loader} className="loader" alt="loader" />
         }
-
       </main>
     </div>
   );
