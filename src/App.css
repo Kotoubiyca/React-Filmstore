@@ -7,7 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .header {
   display: flex;
   background: #9c27b0;
@@ -32,4 +31,9 @@ body {
 .loader {
   margin: 20vh auto;
   display: block;
+}
+
+.main .button-back {
+  margin-bottom: 20px;
+  text-transform: capitalize;
 }
