@@ -11,7 +11,10 @@ export const FilmList = (props) => {
   return (
       <div style={filmList}>
         {props.filmData.map((item, key) => {
-          return <ListCard key={key} film={item}/>
+          return <ListCard
+              key={key}
+              film={item}
+              handleGetFullInfo={props.handleGetFullInfo} />
         })}
       </div>
   )

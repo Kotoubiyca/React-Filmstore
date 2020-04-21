@@ -6,7 +6,7 @@ export const ListCard = (props) => {
     const film = props.film
     
     return (
-        <div className="list-card">
+        <div className="list-card" onClick={() => props.handleGetFullInfo(film['id'])}>
             <img
                 className="list-card-img"
                 src={'https://image.tmdb.org/t/p/w500'+film['poster_path']}

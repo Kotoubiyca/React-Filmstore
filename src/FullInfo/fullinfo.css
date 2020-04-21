@@ -1,0 +1,47 @@
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+.details-title {
+  font-size: 2em;
+}
+
+.details-vote {
+  display: flex;
+  align-items: center;
+  padding: .4em;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: .8em;
+}
+
+.details-vote img {
+  width: 1em;
+  height: 1em;
+}
+
+.details-vote span {
+  font-weight: 700;
+  margin-left: .5em;
+  line-height: 1;
+}
+
+.details-content {
+  display: flex;
+}
+
+.details-content-image {
+  margin-right: 2em;
+  width: 35%;
+  min-width: 300px;
+}
+
+.details-content-image img {
+  width: 100%;
+  height: auto;
+}
